@@ -7,9 +7,16 @@ from sklearn.preprocessing import StandardScaler
 
 BASE_DIR = Path(__file__).resolve().parent
 
-DATA_PATH = r"C:\Clg\TekWorks\week-11\Day-20\SVR\DataSVR.csv"
+DATA_PATH = BASE_DIR / "DataSVR.csv"
 MODEL_PATH = BASE_DIR / "model.pkl"
 
+
+if not DATA_PATH.exists():
+    st.error(
+        "DataSVR.csv not found. Add the file to the same folder as app.py "
+        "and redeploy."
+    )
+    st.stop()
 
 df = pd.read_csv(DATA_PATH)
 
